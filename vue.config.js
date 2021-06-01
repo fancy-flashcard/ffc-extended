@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: "/ffc/",
+  publicPath: "/ffc-extended/",
   transpileDependencies: ["vuetify"],
   pwa: {
     themeColor: "#363636",
