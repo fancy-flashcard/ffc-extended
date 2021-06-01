@@ -38,7 +38,7 @@ export default class About extends Vue {
       navigator
         .share({
           title: "Fancy Flashcard",
-          url: "https://fancy-flashcard.github.io/ffc/",
+          url: "https://fancy-flashcard.github.io/ffc-extended/",
           text: "Try out this cool app I found."
         })
         .then(() => {
@@ -48,7 +48,7 @@ export default class About extends Vue {
     } else {
       const options = {
         title: "Share Fancy Flashcard",
-        url: "https://fancy-flashcard.github.io/ffc/",
+        url: "https://fancy-flashcard.github.io/ffc-extended/",
         buttons: [
           {
             name: "Close",
