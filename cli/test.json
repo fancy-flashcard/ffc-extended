@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "author": "Niko Lockenvitz & Rene-Pascal Fischer",
+    "version": "1.1.1",
+    "uuid": "6d4b5420-3c3e-42bc-addd-019597fd438b"
+  },
+  "decks": {
+    "d0": {
+      "meta": {
+        "deck_name": "A test deck",
+        "next_card_id": 2,
+        "description": "This is a deck created for testing purposes. It is about \"mathematics\"."
+      },
+      "cards": {
+        "0": {
+          "q": "2+2?",
+          "a": "4"
+        },
+        "1": {
+          "q": "3*4*10?",
+          "a": "5!"
+        }
+      }
+    },
+    "d1": {
+      "meta": {
+        "deck_name": "Another awesome test deck",
+        "next_card_id": 3,
+        "description": "This is another deck created for testing purposes. It is about \"time\"."
+      },
+      "cards": {
+        "0": {
+          "q": "How many seconds in a day (on earth)?",
+          "a": "86400"
+        },
+        "2": {
+          "q": "Has the year 2000 been a leap year?",
+          "a": "yes (because each year divisible by 4 is a leap year (except the ones divisible by 100 (except the ones divisible by 400)))"
+        }
+      }
+    }
+  }
+}
