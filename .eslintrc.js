@@ -21,5 +21,6 @@ module.exports = {
     "@typescript-eslint/class-name-casing": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "prettier/prettier": 0,
+    '@typescript-eslint/no-var-requires': 0,
   },
 };
