@@ -23,10 +23,5 @@
     "to": "/about",
     "icon": "mdi-information",
     "title": "About"
-  },
-  {
-    "to": "/licenses",
-    "icon": "mdi-copyright",
-    "title": "Licenses"
   }
 ]

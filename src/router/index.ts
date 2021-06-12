@@ -41,11 +41,6 @@ const routes: Array<RouteConfig> = [
     path: '/carddeckcreator',
     name: 'CardDeckCreator',
     component: () => import('../components/carddeckcreator/CardDeckCreator.vue'),
-  },
-  {
-    path: '/licenses',
-    name: 'Licenses',
-    component: () => import('../components/licenses/Licenses.vue'),
   }
 ];
 
