@@ -34,6 +34,7 @@ const { LangEn } = require("@nlpjs/lang-en-min");
 // const { NlpManager } = require('node-nlp');
 
 import { Event } from "../../types";
+import { TrainingDataParser } from "./../../helpers/training-data-parser";
 
 @Component
 export default class ImportDeckFromURL extends Vue {
@@ -46,33 +47,36 @@ export default class ImportDeckFromURL extends Vue {
   ];
 
   async trainChatbot(fileContent: any) {
+    console.log(JSON.stringify(fileContent));
 
-    alert("hi");
+    const trainingDataParser = new TrainingDataParser();
 
+    const qaPairs = trainingDataParser.getQAPairsFromFFC(fileContent);
+
+    const documents = trainingDataParser.getDocuments(qaPairs);
+    const answers = trainingDataParser.getAnswers(qaPairs);
+
+    
     (async () => {
       const container = await containerBootstrap();
       container.use(Nlp);
       container.use(LangEn);
       const nlp = container.get("nlp");
       nlp.settings.autoSave = false;
-      nlp.addLanguage("en");
-      // Adds the utterances and intents for the NLP
-      nlp.addDocument("en", "goodbye for now", "greetings.bye");
-      nlp.addDocument("en", "bye bye take care", "greetings.bye");
-      nlp.addDocument("en", "okay see you later", "greetings.bye");
-      nlp.addDocument("en", "bye for now", "greetings.bye");
-      nlp.addDocument("en", "i must go", "greetings.bye");
-      nlp.addDocument("en", "hello", "greetings.hello");
-      nlp.addDocument("en", "hi", "greetings.hello");
-      nlp.addDocument("en", "howdy", "greetings.hello");
+      nlp.addLanguage("de");
+      // nlp.addLanguage("en");
 
-      // Train also the NLG
-      nlp.addAnswer("en", "greetings.bye", "Till next time");
-      nlp.addAnswer("en", "greetings.bye", "see you soon!");
-      nlp.addAnswer("en", "greetings.hello", "Hey there!");
-      nlp.addAnswer("en", "greetings.hello", "Greetings!");
+      for (const document of documents) {
+        nlp.addDocument(document.lang, document.utterance, document.intent);
+      }
+
+      for (const answer of answers) {
+        nlp.addAnswer(answer.lang, answer.intent, answer.output);
+      }
+
       await nlp.train();
-      const response = await nlp.process("en", "I should go now");
+
+      const response = await nlp.process("de", "Was ist unter der Wirtschaftsinformatik zu verstehen?");
       console.log(response);
     })();
   }
@@ -83,7 +87,7 @@ export default class ImportDeckFromURL extends Vue {
       const fileContent = await response.json();
 
       await this.trainChatbot(fileContent);
-      
+
       this.$eventHub.$emit(Event.ADD_DECKS_FROM_JSON, fileContent, this.chosenURL);
     } catch (error) {
       // console.log(error);
