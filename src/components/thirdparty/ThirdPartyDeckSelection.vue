@@ -1,5 +1,9 @@
 <template>
   <div class="ThirdPartyDeckSelection">
+
+    <v-subheader>You can find many reusable card decks here: <a href="https://github.com/fancy-flashcard/deck-collection"> https://github.com/fancy-flashcard/deck-collection</a>
+    </v-subheader>
+
     <v-subheader>Third Party Decks
       <v-icon size="1em" @click="showHelpText = !showHelpText" class="mx-1">mdi-help-circle-outline</v-icon>
     </v-subheader>
@@ -25,6 +29,7 @@
           :id="deck.url"
         >
           <v-list-item-content>
+
             <v-list-item-title>
               {{ deck.name }}
               <v-icon size="1em" color="indigo">
