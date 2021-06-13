@@ -24,16 +24,20 @@ export class TrainingDataParser {
         const qaPairs: QA[] = []
 
         for (const d of Object.keys(trainingData.decks)) {
+            console.log('hello')
             console.log(Object.keys(trainingData.decks))
-
-            for (const e of Object.keys(Object.keys(trainingData.decks[d].cards))) {
+            console.log('hi')
+            for (const e of Object.keys(trainingData.decks[d].cards)) {
                 const qa: QA = {
-                    q: trainingData.decks.d1.cards[e].q,
-                    a: trainingData.decks.d1.cards[e].a,
+                    q: trainingData.decks[d].cards[e].q,
+                    a: trainingData.decks[d].cards[e].a,
                 }
 
                 qaPairs.push(qa)
             }
+
+            console.log('und tschüss')
+            console.log(qaPairs.length)
         }
 
         return qaPairs
@@ -50,7 +54,7 @@ export class TrainingDataParser {
                 utterance: qaPair.q,
                 intent: qaPair.q,
             }
-            
+
             documents.push(document)
         }
 
@@ -68,7 +72,7 @@ export class TrainingDataParser {
                 intent: qaPair.q,
                 output: qaPair.a
             }
-            
+
             answers.push(answer)
         }
 

@@ -47,13 +47,14 @@ export default class ImportDeckFromURL extends Vue {
   ];
 
   async trainChatbot(fileContent: any) {
-    console.log(JSON.stringify(fileContent));
+    // console.log(JSON.stringify(fileContent));
 
     const trainingDataParser = new TrainingDataParser();
 
     const qaPairs = trainingDataParser.getQAPairsFromFFC(fileContent);
 
     const documents = trainingDataParser.getDocuments(qaPairs);
+
     const answers = trainingDataParser.getAnswers(qaPairs);
 
     
@@ -76,7 +77,8 @@ export default class ImportDeckFromURL extends Vue {
 
       await nlp.train();
 
-      const response = await nlp.process("de", "Was ist unter der Wirtschaftsinformatik zu verstehen?");
+      // const response = await nlp.process("de", "Was ist unter der Wirtschaftsinformatik zu verstehen?");
+      const response = await nlp.process("de", "Was sind die Aufgaben des Rechnungswesens?");
       console.log(response);
     })();
   }

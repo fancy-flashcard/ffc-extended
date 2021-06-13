@@ -11,12 +11,13 @@
 
     <!-- This is the Toast UI Markdown Viewer -->
     <!-- <text-viewer :key="inc" class="max-height" style="color: black" :text="curLearningElement.card.q"/> -->
-    <text-viewer v-if="renderComponent" class="max-height" style="color: black" :text="curLearningElement.card.q"/>
+    <text-viewer v-if="renderComponent" class="max-height" style="color: black" :text="curLearningElement.card.q" textType="question"/>
     <div style="height: 10px"></div>
     <div class="max-height" style="color: black">
-      <text-viewer v-if="curLearningElement.showAnswer" :text="curLearningElement.card.a"/>
+      <text-viewer v-if="curLearningElement.showAnswer" :text="curLearningElement.card.a" textType="answer"/>
       <v-btn v-else @click="revealAnswer">Reveal Answer</v-btn>
     </div>
+
 
     <Rating
       ref="rating"

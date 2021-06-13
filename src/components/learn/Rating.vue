@@ -1,5 +1,6 @@
 <template>
   <div class="rating">
+
     <div class="star-wrapper">
       <table>
         <tr>
@@ -10,6 +11,7 @@
        RIGHT
        
      </button></th>
+
         </tr>
       </table>
      
