@@ -1,26 +1,31 @@
 <template>
   <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
   <div id="allOfIt" class="allOfIt">
-    <button id="open-button" class="open-button" onclick="openClose()">Chat</button>
-    <div class="form-container" id="myForm">
+    <button id="open-button" class="open-button" @click="openClose()">Chat</button>
+    <!-- <div v-if="formIsOpen" class="form-container" id="myForm"> -->
+    <div v-if="formIsOpen" class="form-container" id="myForm">
       <span id="myClose" class="close" onclick="closeForm()"> &times; </span>
 
-      <div id="messages" class="messages-area">
+    <div v-for="message in messages" :key="message">
+      {{message}}
+    </div>
+
+      <!-- <div id="messages" class="messages-area">
         <div class="profile-area">
-          <!-- <img class="profile-image" src=""
-                     alt="Card image"> -->
+          <img class="profile-image" src=""
+                     alt="Card image">
           <p></p>
           <h3 style="text-align: center">Lucky Luke<span class="dot"></span></h3>
           <br />
         </div>
-      </div>
+      </div> -->
 
       <div class="row">
         <div class="column1">
           <textarea placeholder="Your Message... :)" id="input" name="msg"></textarea>
         </div>
         <div class="column2">
-          <button onclick="addMessageFromUser()" class="send-button">
+          <button @click="sendMessage()" class="send-button">
             <i class="fa fa-paper-plane" aria-hidden="true"></i>
           </button>
         </div>
@@ -38,14 +43,23 @@ import Component from "vue-class-component";
 @Component
 export default class Chatbot extends Vue {
   formIsOpen = false
+  currentMessage ='michael'
+  // messages: string[] = []
+  messages: string[] = ['hi', 'lucky']
+  pause = false
+  welcomeSent = false
 
- messages = []
- pause = false
- welcomeSent = false
+    openClose() {
+            console.log('hello hello')
+            this.formIsOpen = !this.formIsOpen
+            // this.closeForm()
+    }
 
-  async sayHey(fileContent: any) {
-    alert('hey')
-  }
+    sendMessage(messageFromUser: string) {
+      alert('ok')
+      this.messages.push(messageFromUser)
+
+    }
 
     // startListening() {
     //     let theInputElement = document.getElementById('input')
@@ -186,46 +200,41 @@ export default class Chatbot extends Vue {
     //     }, 100)
     // }
 
-    // openClose() {
-    //     if (this.formIsOpen) {
-    //         closeForm()
-    //     } else {
-    //         openForm()
-    //     }
-    // }
 
-    // openForm() {
-    //     console.log('opening chat window')
-    //     const theForm = document.getElementById("myForm");
-    //     theForm.style.zIndex = 1000000
-    //     theForm.style.display = "block"
-    //     const theClose = document.getElementById("myClose");
-    //     theClose.style.zIndex = 1000001
-    //     formIsOpen = true
+    openForm() {
+        console.log('opening chat window')
 
-    //     if (!welcomeSent) {
-    //         const pauseBeforeShowWriting = Math.round(Math.random() * (1000 - 900) + 900)
-    //         setTimeout(() => {
-    //             showAssistantIsTyping()
-    //         }, pauseBeforeShowWriting)
 
-    //         setTimeout(() => {
-    //             showWelcomeMessage()
-    //         }, pauseBeforeShowWriting + 1000)
+        // const theForm = document.getElementById("myForm");
+        // theForm.style.zIndex = 1000000
+        // theForm.style.display = "block"
+        // const theClose = document.getElementById("myClose");
+        // theClose.style.zIndex = 1000001
+        // formIsOpen = true
 
-    //         welcomeSent = true
-    //     }
+        // if (!welcomeSent) {
+        //     const pauseBeforeShowWriting = Math.round(Math.random() * (1000 - 900) + 900)
+        //     setTimeout(() => {
+        //         showAssistantIsTyping()
+        //     }, pauseBeforeShowWriting)
 
-    // }
+        //     setTimeout(() => {
+        //         showWelcomeMessage()
+        //     }, pauseBeforeShowWriting + 1000)
 
-    // closeForm() {
-    //     const theForm = document.getElementById("myForm");
-    //     theForm.style.zIndex = -1000000
-    //     theForm.style.display = "none";
-    //     const theClose = document.getElementById("myClose");
-    //     theClose.style.zIndex = -1000000
-    //     formIsOpen = false
-    // }
+        //     welcomeSent = true
+        // }
+
+    }
+
+    closeForm() {
+        // const theForm = document.getElementById("myForm");
+        // theForm.style.zIndex = -1000000
+        // theForm.style.display = "none";
+        // const theClose = document.getElementById("myClose");
+        // theClose.style.zIndex = -1000000
+        // formIsOpen = false
+    }
 
     // shallChatWindowBeDisplayed() {
     //     if (document.URL.indexOf('cart') === -1) {
@@ -275,15 +284,15 @@ export default class Chatbot extends Vue {
 }
 
 .form-container {
-  z-index: -1000000;
+  // z-index: -1000000;
   padding-left: 20px;
   padding-top: 20px;
   padding-right: 20px;
   padding-bottom: 4px;
+  margin-bottom: 10vh;
   border: solid black;
   background-color: white;
-  display: none;
-  position: fixed;
+  // display: none;
   right: 4px;
   position: fixed;
   bottom: 70px;
@@ -326,9 +335,9 @@ input:focus {
   /* Firefox */
 }
 
-.messages-area::-webkit-scrollbar {
-  display: none;
-}
+// .messages-area::-webkit-scrollbar {
+//   display: none;
+// }
 
 .close {
   cursor: pointer;

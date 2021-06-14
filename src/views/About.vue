@@ -11,11 +11,11 @@
 
           <v-footer app>
             <span class="px-4 copyright">
-              &copy; {{ new Date().getFullYear() }} Niko Lockenvitz &amp; Rene-Pascal Fischer
+              &copy; {{ new Date().getFullYear() }} DHBW Mannheim Students
               <br />
               <a
-                href="https://github.com/fancy-flashcard/ffc"
-              >https://github.com/fancy-flashcard/ffc</a>
+                href="https://github.com/fancy-flashcard/ffc-extended"
+              >https://github.com/fancy-flashcard/ffc-extended</a>
             </span>
           </v-footer>
         </v-col>

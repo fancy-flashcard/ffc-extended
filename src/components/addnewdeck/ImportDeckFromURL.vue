@@ -28,8 +28,10 @@ import Component from "vue-class-component";
 // import NlpManager from "node-nlp";
 
 const { containerBootstrap } = require("@nlpjs/core");
+// in general we use https://www.npmjs.com/package/node-nlp however for client only without file system access...
 const { Nlp } = require("@nlpjs/nlp");
 const { LangEn } = require("@nlpjs/lang-en-min");
+// const { LangDe } = require("@nlpjs/lang-de-min");
 
 // const { NlpManager } = require('node-nlp');
 
