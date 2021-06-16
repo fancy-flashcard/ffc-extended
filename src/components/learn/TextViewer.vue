@@ -14,7 +14,8 @@
 <script>
 import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor-viewer.css';
-import Chatbot from './Chatbot.vue'
+// import Chatbot from './Chatbot.vue'
+import Bot from './Bot.vue'
 import {Viewer} from '@toast-ui/vue-editor';
 
 export default {
@@ -34,7 +35,8 @@ export default {
         }
     },
     components: {
-        chatbot: Chatbot,
+        // chatbot: Chatbot,
+        chatbot: Bot,
         viewer: Viewer,
     }
 }
